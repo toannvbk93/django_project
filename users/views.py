@@ -15,7 +15,7 @@ class RegisterView(TemplateView):
             form.save()
             username = form.cleaned_data.get('username')
             messages.success(request, f'Your account has been created! you are now able to login')
-            return redirect('login/')
+            return redirect('/login/')
         return render(request, 'users/register.html', {'form': form})
 class ProfileView(TemplateView):
     def get(self, request, *args, **kwargs):
