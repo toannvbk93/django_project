@@ -123,7 +123,7 @@ USE_TZ = True
 
 STATIC_URL = 'blog/static/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media/profile_pics')
-MEDIA_URL = '/media/'
+MEDIA_URL = '/media/profile_pics/'
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
 LOGIN_REDIRECT_URL = '/'
 LOGIN_URL = 'login'

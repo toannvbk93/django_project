@@ -1,6 +1,4 @@
 *.sqlite3
 *.DS_Store
-*/users/__pycache__/
-*/users/__init__/
-*/blog/__init__
-*/blog/__pycache__/
+*__pycache__/
+*__init__/
