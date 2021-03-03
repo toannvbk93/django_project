@@ -19,3 +19,5 @@ class ProfileUpdateForm(forms.ModelForm):
     class Meta:
         model = Profile
         fields = ['image']
+class DemoForm(forms.Form):
+    your_name = forms.CharField(label='Your name', max_length=100)

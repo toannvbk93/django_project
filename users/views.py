@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect
 from django.views.generic import TemplateView, ListView
 from django.contrib import messages
-from .forms import UserRegisterForm, UserUpdateForm, ProfileUpdateForm
+from .forms import UserRegisterForm, UserUpdateForm, ProfileUpdateForm, DemoForm
 
 # Create your views here.
 
@@ -40,5 +40,12 @@ class ProfileView(TemplateView):
         }
 
         return render(request, 'users/profile.html', context)
-
-
+    
+class DemoView(TemplateView):
+    def get(self, request, *args, **kwargs):
+        form = DemoForm()
+        return render(request, 'users/demo.html', {'form': form})
+    def post(self, request, *args, **kwargs):
+        form = DemoForm(request.POST)
+        if form.is_valid():
+            return render(request, 'users/demo.html', {'form': form, 'your_name': request.POST.get('your_name')})
