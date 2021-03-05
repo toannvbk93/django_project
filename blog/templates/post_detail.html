@@ -1,0 +1,12 @@
+{%extends "base.html"%}
+{% block title %}
+Home page
+{% endblock %}
+{% block content %}
+<h1>Post detail</h1>
+<img class="rounded-circle article" src="{{object.author.profile.image.url}}" alt="">
+<h2>{{object.title}}</h2>
+<p>{{object.content}}</p>
+<p>Post by {{object.author}}</p>
+<p>Post at {{object.date_posted|date:"F d, Y"}}</p>
+{% endblock %}
