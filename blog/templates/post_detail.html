@@ -9,4 +9,8 @@ Home page
 <p>{{object.content}}</p>
 <p>Post by {{object.author}}</p>
 <p>Post at {{object.date_posted|date:"F d, Y"}}</p>
+{% if object.author == user%}
+    <a class="btn btn-secondary" href="{% url 'blog:post-update' object.id %}">Update</a>
+    <a class="btn btn-danger" href="{% url 'blog:post-delete' object.id %}">Delete</a>
+{% endif %}
 {% endblock %}
