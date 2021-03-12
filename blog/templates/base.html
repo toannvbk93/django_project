@@ -46,8 +46,8 @@
                     </div>
                 </li>
             </ul>
-            <form class="form-search form-inline my-2 my-lg-0">
-                <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+            <form name="searchForm" class="form-search form-inline my-2 my-lg-0" method="GET" action="{% url 'blog:search-post'%}" onsubmit="return validateSearchForm()">
+                <input name="search" class="form-control mr-sm-2" type="search" placeholder="Post of title" aria-label="Search">
                 <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
             </form>
         </div>
@@ -82,6 +82,13 @@
           } else {
             x.style.display = "block";
           }
+        }
+        function validateSearchForm() {
+            var x = document.forms["searchForm"]["search"].value;
+            if (x == "" || x == null) {
+                alert("Enter post title search");
+                return false;
+            }
         }
     </script>
 

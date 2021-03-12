@@ -1,4 +1,5 @@
 @import "post.css";
+@import "post-detail.css";
 
 .main-content {
     display: flex;

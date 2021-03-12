@@ -4,19 +4,27 @@ Home
 {% endblock %}
 {% block content %}
 <h1>All post</h1>
-{% for post in posts %}
-<div class="post-item">
-    <div class="author-image">
-        <img class=" rounded-circle article" src="{{post.author.profile.image.url}}" alt="">
+<div class="all-content">
+    <div class="left-content">
+        {% for post in posts %}
+        <div class="post-item">
+            <div class="author-image">
+                <img class=" rounded-circle article" src="{{post.author.profile.image.url}}" alt="">
+            </div>
+            <div class="post-content">
+                <h2><a href="{% url 'blog:post-detail' post.id %}">{{post.title}}</a></h2>
+                <p class="post-detail">{{post.content}}</p>
+                Post by <a class="author-post" href="{% url 'blog:user-posts' post.author.username %} "> {{post.author}}</a>
+                <p class="date-post">{{post.date_posted|date:"F d, Y"}}</p>
+            </div>
+        </div>
+        {% endfor %}
     </div>
-    <div class="post-content">
-        <h2><a href="{% url 'blog:post-detail' post.id %}">{{post.title}}</a></h2>
-        <p class="post-detail">{{post.content}}</p>
-        Post by <a class="author-post" href="{% url 'blog:user-posts' post.author.username %} "> {{post.author}}</a>
-        <p class="date-post">{{post.date_posted|date:"F d, Y"}}</p>
+    <div class="right-content">
+        <a href="#">2021</a>
+        <a href="#">2020</a>
     </div>
 </div>
-{% endfor %}
 <div class="paging-content">
     {% if is_paginated %}
         {% if page_obj.has_previous %}

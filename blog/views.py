@@ -3,14 +3,34 @@ from django.views.generic import TemplateView, ListView, DetailView, CreateView,
 from .models import Post
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 from django.contrib.auth.models import User
+from django.http import HttpResponseRedirect
+
+from .forms import SearchForm
 # Create your views here.
 
 class HomeView(TemplateView):
     template_name = "home.html"
-    
+    form = SearchForm
     def get(self, request, *args, **kwargs):
         context = {'posts': Post.objects.all()}
         return render(request, self.template_name, context)
+    
+
+class SearchView(ListView):
+    template_name="search_result.html"
+    model = Post
+    def get_context_data(self, **kwargs):
+        data = super().get_context_data(**kwargs)
+        data['search_content'] = self.request.GET['search']
+        return data
+    def get_queryset(self):
+        search_content = self.request.GET['search']
+        posts = Post.objects.filter(title__icontains=search_content).order_by('-date_posted')
+        if not posts:
+            return Post.objects.all()
+        else:
+            return posts
+            
 
 class AboutView(TemplateView):
     template_name = "about.html"
@@ -20,7 +40,7 @@ class PostListView(ListView):
     template_name = 'home.html' # <app>/<model>_<viewtype>.html
     context_object_name = 'posts'
     # ordering = ['-date_posted']
-    paginate_by = 3
+    paginate_by = 10
 
 class UserPostListView(ListView):
     model = Post
