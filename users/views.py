@@ -49,3 +49,7 @@ class DemoView(TemplateView):
         form = DemoForm(request.POST)
         if form.is_valid():
             return render(request, 'users/demo.html', {'form': form, 'your_name': request.POST.get('your_name')})
+
+class ContactUsView(TemplateView):
+    def get(self, request, *args, **kwargs):
+        return render(request, 'users/contact.html')

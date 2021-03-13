@@ -1,16 +1,22 @@
 {%extends "base.html"%}
 {% block title %}
-Home page
+Post detail
 {% endblock %}
 {% block content %}
 <h1>Post detail</h1>
-<img class="rounded-circle article" src="{{object.author.profile.image.url}}" alt="">
-<h2>{{object.title}}</h2>
-<p>{{object.content}}</p>
-<p>Post by {{object.author}}</p>
-<p>Post at {{object.date_posted|date:"F d, Y"}}</p>
-{% if object.author == user%}
-    <a class="btn btn-secondary" href="{% url 'blog:post-update' object.id %}">Update</a>
-    <a class="btn btn-danger" href="{% url 'blog:post-delete' object.id %}">Delete</a>
-{% endif %}
+<div class="post-detail">
+    <div class="avata">
+        <a href="{% url 'blog:user-posts' object.author.username %}" ><img class="rounded-circle article" src="{{object.author.profile.image.url}}" alt=""></a>
+    </div>
+    <div class="post-info">
+        <h2>{{object.title}}</h2>
+        <p class="post-content">{{object.content}}</p>
+        Post by <a class="post-author" href="{% url 'blog:user-posts' object.author.username %} ">  {{post.author}}</a>
+        <p class="post-date">{{object.date_posted|date:"F d, Y"}}</p>
+        {% if object.author == user%}
+            <a class="btn btn-secondary" href="{% url 'blog:post-update' object.id %}">Update</a>
+            <a class="btn btn-danger" href="{% url 'blog:post-delete' object.id %}">Delete</a>
+        {% endif %}
+    </div>
+</div>
 {% endblock %}
