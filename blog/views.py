@@ -19,6 +19,7 @@ class HomeView(TemplateView):
 class SearchView(ListView):
     template_name="search_result.html"
     model = Post
+    context_object_name = 'posts'
     def get_context_data(self, **kwargs):
         data = super().get_context_data(**kwargs)
         data['search_content'] = self.request.GET['search']

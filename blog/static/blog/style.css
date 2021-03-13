@@ -1,9 +1,22 @@
 @import "post.css";
 @import "post-detail.css";
 
+* {
+    padding: 0;
+    margin: 0;
+    top: 0;
+}
+
+html, body {
+    height: 100%;
+    width: 100%;
+}
+
 .main-content {
     display: flex;
     flex-direction: column;
+    height: 88%;
+    flex: 1;
 }
 
 .max-navbar {
