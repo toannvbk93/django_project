@@ -4,6 +4,8 @@ from .models import Post
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 from django.contrib.auth.models import User
 from django.http import HttpResponseRedirect
+from django import forms
+from ckeditor.widgets import CKEditorWidget
 
 from .forms import SearchForm
 # Create your views here.
@@ -31,7 +33,6 @@ class SearchView(ListView):
             return Post.objects.all()
         else:
             return posts
-            
 
 class AboutView(TemplateView):
     template_name = "about.html"
