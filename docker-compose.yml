@@ -1,0 +1,22 @@
+version: '3'
+services:
+ web:
+   container_name: django-docker
+   build: .
+   command: bash -c "pip3 install django-ckeditor && pip3 install django-crispy-forms && pip3 install image && python3 manage.py runserver 0.0.0.0:8000"
+   volumes:
+     - .:/code
+   working_dir: /code
+   ports:
+     - "8000:8000"
+   depends_on:
+     - db
+ db:
+   container_name: django-docker-db
+   image: mysql:5.7
+   restart: always
+   environment:
+     MYSQL_DATABASE: django_docker
+     MYSQL_USER: root
+     MYSQL_PASSWORD: password
+     MYSQL_ALLOW_EMPTY_PASSWORD: 'yes'
