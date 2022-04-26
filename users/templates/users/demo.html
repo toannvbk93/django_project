@@ -1,0 +1,6 @@
+<form action="/demo/" method="POST">
+    {% csrf_token %}
+    {{form}}
+    <input type="submit" value="Submit">
+    {{ your_name }}
+</form>

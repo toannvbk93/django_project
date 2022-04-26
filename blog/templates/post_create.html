@@ -1,0 +1,23 @@
+{%extends "base.html"%}
+{% load crispy_forms_tags %}
+{% block title %}
+    Create post
+{% endblock %}
+{% block extrahead %}
+<script>window.CKEDITOR_BASEPATH = '/static/ckeditor/ckeditor/';</script>
+{{ block.super }}
+{% endblock %}
+{% block content %}
+    <div class="content-section">
+        <form method="POST">
+            {%csrf_token%}
+            <fieldset class="form-group">
+                <legend class="border-bottom mb-4">Blog post</legend>
+                {{form|crispy}}
+            </fieldset>
+            <div class="form-group">
+                <button class="btn btn-outline-info" type="submit">Add  blog</button>
+            </div>
+        </form>
+    </div>
+{% endblock %}

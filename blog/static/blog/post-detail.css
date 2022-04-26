@@ -1,0 +1,19 @@
+.post-detail {
+    display: inline-flex;
+}
+
+.post-detail .avata img {
+    width: 40px;
+    height: 40px;
+    margin-right: 10px;
+    margin-top: 4px;
+}
+.post-detail .post-info h2 {
+    color: black;
+    font-size: 30px;
+}
+
+.post-detail .post-info .post-date {
+    color: #ada8a8;
+    font-size: 15px;
+}
