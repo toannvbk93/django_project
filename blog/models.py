@@ -17,6 +17,8 @@ class Post(models.Model):
         return self.title
     def get_absolute_url(self):
         return reverse('blog:post-detail', kwargs={"pk": self.pk })
+    def get_author(self):
+        return self.author_id
 
 # test content_editor
 class DemoPost(models.Model):
